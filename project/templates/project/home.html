@@ -1,0 +1,24 @@
+{% extends 'main.html' %} {% block content %}
+<table>
+  <tr>
+    <th>Project</th>
+    <th>Positive Vote</th>
+    <th>Vote Count</th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+  {% for proc in project %}
+  <tr>
+    <td>{{proc.title}}</td>
+    <td>{{proc.vote_ratio}}</td>
+    <td>{{proc.vote_total}}</td>
+    <td>{{proc.created}}</td>
+    <td><a href="{% url 'update-project' proc.id %}">Edit</a></td>
+    <td><a href="{% url 'project' proc.id %}">View</a></td>
+    <td><a href="{% url 'delete-project' proc.id%}">Delete</a></td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock content %}
